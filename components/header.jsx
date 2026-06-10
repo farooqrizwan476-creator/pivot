@@ -5,8 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { LayoutDashboard } from "lucide-react";
+import { checkUser } from "@/lib/checkUser";
 
-export default function Header() {
+export default async function Header() {
+  await checkUser();
   return (
     <header className="fixed top-0 w-full border-b bg-background/80 backdrop-blur-md z-50 supports-[backdrop-filter]:bg-background/60">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -34,12 +36,12 @@ export default function Header() {
 
     <Show when="signed-in">
     
-    <Link href="/dashboard">
-      <Button variant="outline">
-        <LayoutDashboard className="h-4 w-4 mr-2" />
-        <span className="hidden md:block">Industry Insights</span>
-      </Button>
-    </Link>
+   <Button variant="outline" asChild>
+  <Link href="/dashboard">
+    <LayoutDashboard className="h-4 w-4 mr-2" />
+    <span className="hidden md:block">Industry Insights</span>
+  </Link>
+</Button>
 
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
