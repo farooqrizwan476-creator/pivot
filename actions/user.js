@@ -55,7 +55,7 @@ export async function updateUser(data) {
         return { updatedUser, industryInsight };
       },
       {
-        timeout: 10000, // default: 5000
+        timeout: 30000, // default: 5000
       }
     );
 
